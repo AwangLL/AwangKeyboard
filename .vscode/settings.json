@@ -1,0 +1,18 @@
+{
+    "nrf-connect.topdir": "d:\\Nordic\\v1.9.0",
+    "nrf-connect.toolchain.path": "d:\\Nordic\\v1.9.0\\toolchain",
+    "nrf-connect.applications": [
+        "${workspaceFolder}\\2-Firmware\\Awang-Keyboard-fw"
+    ],
+    "nrf-connect.boardRoots": [
+        "${workspaceFolder}"
+    ],
+    "files.associations": {
+        "type_traits": "cpp",
+        "vector": "cpp",
+        "*.tcc": "cpp",
+        "types.h": "c",
+        "zephyr.h": "c",
+        "timer.hpp": "c"
+    }
+}
