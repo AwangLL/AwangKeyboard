@@ -1,0 +1,38 @@
+# Copyright (c) 2019, Nordic Semiconductor ASA
+# SPDX-License-Identifier: Apache-2.0
+
+description: |
+  74HC165 chip, SPI binding
+
+  Driver bindings for controlling a series of 74HC165
+  with a SPI master.
+
+  The SPI driver should be usable as long as a zephyr SPI API driver
+  is available for your board. Hardware specific tuning is required
+  using these properties:
+
+    - spi-max-frequency
+    - sck-pin : connected to the CP port of all chips
+    - miso-pin : connected to the Q7 port of the last chip
+    
+
+compatible: "hc165"
+
+include: [spi-device.yaml]
+
+properties:
+
+  pl-gpios:
+    type: phandle-array
+    required: true
+    description: gpio connected to the PL port of all chips
+
+  ce-gpios:
+    type: phandle-array
+    required: true
+    description: gpio connected to the CE port of all chips
+  
+  chain-length:
+    type: int
+    required: true
+    description: quatity of series chips

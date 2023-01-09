@@ -1,0 +1,16 @@
+
+
+target_sources_ifdef(CONFIG_AWANG_CLOCK_ENABLE
+  app PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/clock.c)
+
+target_sources_ifdef(CONFIG_AWANG_MATRIX_ENABLE
+  app PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/matrix.c)
+
+target_sources_ifdef(CONFIG_AWANG_LED_ENABLE
+  app PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/led.c)
+
+target_sources_ifdef(CONFIG_AWANG_USB_ENABLE 
+  app PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/usb.c)
+
+target_sources_ifdef(CONFIG_AWANG_HID_ENABLE 
+  app PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/hid.c)

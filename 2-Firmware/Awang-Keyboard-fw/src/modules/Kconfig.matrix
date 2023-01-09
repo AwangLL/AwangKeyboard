@@ -1,0 +1,25 @@
+menu "Keyboard matrix"
+
+config AWANG_MATRIX_ENABLE
+    bool "Enable keyboard matrix support"
+    depends on AWANG_CLOCK_ENABLE
+    help
+        keyboard matrix scan
+
+if AWANG_MATRIX_ENABLE
+    config AWANG_MATRIX_DEBOUNCE_TIMES
+        int "matrix debouce times"
+        default 1
+    config AWANG_MATRIX_DEBOUNCE_DELAY
+        int "matrix debounce delay in us"
+        default 100
+    config AWANG_MATRIX_SCAN_INTERVAL
+        int "matrix scan interval in ms"
+        default 10
+endif
+
+module = AWANG_MATRIX
+module-str = matrix
+source "subsys/logging/Kconfig.template.log_config"
+
+endmenu

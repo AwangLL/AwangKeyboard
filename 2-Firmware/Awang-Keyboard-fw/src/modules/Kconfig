@@ -1,0 +1,5 @@
+
+rsource "Kconfig.clock"
+rsource "Kconfig.matrix"
+rsource "Kconfig.led"
+rsource "Kconfig.usb"

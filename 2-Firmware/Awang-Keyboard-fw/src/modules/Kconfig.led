@@ -1,0 +1,19 @@
+menu "Keyboard led"
+
+config AWANG_LED_ENABLE
+    bool "Enable keyboard matrix support"
+    depends on SPI
+    depends on LED_STRIP
+    depends on WS2812_STRIP
+    help
+        keyboard led control
+
+if AWANG_LED_ENABLE
+
+endif
+
+module = AWANG_LED
+module-str = led
+source "subsys/logging/Kconfig.template.log_config"
+
+endmenu

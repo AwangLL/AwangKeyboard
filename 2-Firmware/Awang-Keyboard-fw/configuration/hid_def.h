@@ -1,13 +1,73 @@
 #pragma once
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-/*---------------------------- C Scope ---------------------------*/
+#define INPUT_REPORT_LEN_KEYBOARD 15
+#define OUTPUT_REPORT_LEN_KEYBOARD 1
+#define INPUT_REPORT_LEN_CONSUMER 2
+#define INPUT_REPORT_ID_KEYBOARD 0x01
+#define OUTPUT_REPORT_ID_KEYBOARD 0x01
+#define INPUT_REPORT_ID_CONSUMER 0x02
 
-#include <stdint.h>
+static const uint8_t hid_kbd_report_desc_nkro[] = {
+    0x05, 0x01, // Usage Page (Generic Desktop)
+    0x09, 0x06, // Usage (Keyboard)
+    0xA1, 0x01, // Collection (Application)
+    0x85, INPUT_REPORT_ID_KEYBOARD, // Report ID (1)
 
-enum Keycode
+    0x95, 0x08, // Report Count (8)
+    0x75, 0x01, // Report Size (1)
+    0x05, 0x07, // Usage Page (Key Codes)
+    0x19, 0xe0, // Usage Minimum (224)
+    0x29, 0xe7, // Usage Maximum (231)
+    0x15, 0x00, // Logical Minimum (0)
+    0x25, 0x01, // Logical Maximum (1)
+    0x81, 0x02, // Input (Data, Variable, Absolute)
+
+    0x95, 0x01, // Report Count (1)
+    0x75, 0x08, // Report Size (8)
+    0x81, 0x03, // Input (Constant, Variable, Absolute) reserved byte(1)
+
+    0x95, 0x66, // Report Count (102)
+    0x75, 0x01, // Report Size (1)
+    0x19, 0x00, // Usage Minimum (0)
+    0x29, 0x65, // Usage Maximum (101)
+    0x15, 0x00, // Logical Minimum (0)
+    0x25, 0x01, // Logical Maximum (1)
+    0x81, 0x02, // Input (Data, Variable, Absolute)
+    0x95, 0x01, // Report Count (2)
+    0x75, 0x02, // Report Size (1)
+    0x81, 0x03, // Input (Constant, Variable, Absolute) reserved byte(1)
+
+    0x95, 0x05, // Report Count (5)
+    0x75, 0x01, // Report Size (1)
+    0x15, 0x00, // Logical Minimum (0)
+    0x25, 0x01, // Logical Maximum (1)
+    0x05, 0x08, // Usage Page (Page# for LEDs)
+    0x19, 0x01, // Usage Minimum (1) (Num Lock)
+    0x29, 0x05, // Usage Maximum (5) (Kana)
+    0x91, 0x02, // Output (Data, Variable, Absolute), Led report
+    0x95, 0x01, // Report Count (1)
+    0x75, 0x03, // Report Size (3)
+    0x91, 0x03, // Output (Const, Variable, Absolute), Led report padding
+
+    0xC0, // End Collection (Application)
+
+    0x05, 0x0C, // Usage Page (Consumer Devices)
+    0x09, 0x01, // Usage (Consumer Control)
+    0xA1, 0x01, // Collection (Application)
+    0x85, INPUT_REPORT_ID_CONSUMER, //   Report ID (2)
+
+    0x95, 0x01,       // Report Count (1)
+    0x75, 0x10,       // Report Size (16)
+    0x19, 0x01,       // Usage Minimum (0x01)
+    0x2A, 0x9C, 0x02, // Usage Maximum (0x29c)
+    0x15, 0x01,       // Logical Minimum (0x01)
+    0x26, 0x9C, 0x02, // Logical Maximum (0x29c)
+    0x81, 0x00,       // Input (Data, Array) Key array(2 bytes)
+    
+    0xC0,             // End Collection (Application)
+};
+
+enum keycode_t
 {
     KC_TRNS = 0x01,
     /* keyboard keycode */
@@ -176,7 +236,7 @@ static const uint16_t consumer_keycode_map[] = {
     0x194
 };
 
-inline uint16_t get_consumer_by_keycode(uint8_t keycode)
+static inline uint16_t get_consumer_by_keycode(uint8_t keycode)
 {
     return consumer_keycode_map[keycode - 0xE8];
 }
@@ -200,9 +260,3 @@ inline bool keycode_is_function(uint8_t kc)
 {
     return 0xA5 <= kc && kc <= 0xDF;
 }
-
-#ifdef __cplusplus
-}
-/*---------------------------- C++ Scope ---------------------------*/
-
-#endif

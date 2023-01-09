@@ -1,25 +1,26 @@
 #pragma once
+
+#include <stdint.h>
+
+#include "hid_def.h"
+#include "matrix_def.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
-/*---------------------------- C Scope ---------------------------*/
-#include <stdint.h>
-#include "./Keyboard/Keycode.h"
-#include "./Keyboard/Matrix.hpp"
 
-/*** User Config ***/
-struct MatrixConfig {
-    uint8_t keymap[Matrix::NUM_OF_LAYER][Matrix::NUM_OF_KEY];
+struct matrix_config {
+    uint8_t keymap[2][KEY_NUM];
 };
 
-struct ConfigSet {
+struct config_set {
     uint8_t saved;
-    MatrixConfig matrix;
+    struct matrix_config matrix;
 };
 
-extern ConfigSet config;
+extern struct config_set config;
 
-static const ConfigSet defaultConfig = {
+static const struct config_set default_config = {
     .saved = 1,
     .matrix = {
         .keymap = {
@@ -29,7 +30,8 @@ static const ConfigSet defaultConfig = {
                 KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC, KC_BSLS, KC_DEL,
                 KC_CAPL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, KC_ENT,  KC_HOME,
                 KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT, KC_UP,   KC_END,
-                KC_LCTL, KC_LGUI, KC_LALT, KC_SPC,  KC_BSPC, KC_RALT, KC_FN,   KC_RCTL, KC_LEFT, KC_DOWN, KC_RIGT
+                KC_LCTL, KC_LGUI, KC_LALT, KC_SPC,  KC_BSPC, KC_RALT, KC_FN,   KC_RCTL, KC_LEFT, KC_DOWN, KC_RIGT,
+                KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO
             },
             {
                 KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
@@ -37,7 +39,8 @@ static const ConfigSet defaultConfig = {
                 KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
                 KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
                 KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-                KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
+                KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+                KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
             }
         },
     }
@@ -45,6 +48,4 @@ static const ConfigSet defaultConfig = {
 
 #ifdef __cplusplus
 }
-/*---------------------------- C++ Scope ---------------------------*/
-
 #endif

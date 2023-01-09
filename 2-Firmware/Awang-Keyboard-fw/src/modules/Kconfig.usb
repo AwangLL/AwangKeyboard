@@ -1,0 +1,17 @@
+menu "Keyboard matrix"
+
+config AWANG_USB_ENABLE
+    bool "Enable keyboard usb support"
+    depends on USB_DEVICE_STACK
+    help
+        keyboard usb interface
+
+if AWANG_USB_ENABLE
+
+endif
+
+module = AWANG_USB
+module-str = usb
+source "subsys/logging/Kconfig.template.log_config"
+
+endmenu

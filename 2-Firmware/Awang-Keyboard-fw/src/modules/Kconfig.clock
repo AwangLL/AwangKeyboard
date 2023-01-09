@@ -1,0 +1,18 @@
+menu "Keyboard clock"
+
+config AWANG_CLOCK_ENABLE
+    bool "Enable Keyboard clock support"
+    help
+        keyboard main clock control
+
+if AWANG_CLOCK_ENABLE
+    config AWANG_CLOCK_TICK_INTERVAL
+        int "clock tick interval in ms"
+        default 1
+endif
+
+module = AWANG_CLOCK
+module-str = clock
+source "subsys/logging/Kconfig.template.log_config"
+
+endmenu

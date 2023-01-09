@@ -1,0 +1,27 @@
+if LOG
+
+menu "Event options"
+
+comment "Initially logged events"
+
+config AWANG_INIT_LOG_KEYBOARD_EVENT
+    bool "Log keyboard event"
+    default n
+    help
+        Log keyboard event in Awang Keyboard application
+
+config AWANG_INIT_LOG_MATRIX_EVENT
+    bool "Log matrix event"
+    default n
+    help
+        Log matrix event in Awang Keyboard application
+
+config AWANG_INIT_LOG_HID_EVENT
+    bool "Log hid event"
+    default n
+    help
+        Log hid event in Awang Keyboard application
+
+endmenu
+
+endif
