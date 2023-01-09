@@ -1,0 +1,14 @@
+:root {
+  --html-bg-color: #ffffff;
+  --menu-bg-color: #f8f8f8;
+  --menu-text-color: #303030d0;
+  --menu-hover-bg-color: #ecf5ff;
+  --menu-active-text-color: #66ccff;
+}
+
+html.dark {
+  --html-bg-color: #242424;
+  --menu-bg-color: #303030;
+  --menu-text-color: #f8f8f8d0;
+  --menu-hover-bg-color: #374151;
+}
