@@ -7,12 +7,9 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    ElInput: typeof import('element-plus/es')['ElInput']
     Key: typeof import('./src/components/key.vue')['default']
     Keyboard: typeof import('./src/components/icons/keyboard.vue')['default']
-    Keygroup: typeof import('./src/components/keygroup.vue')['default']
     KeyGroup: typeof import('./src/components/key-group.vue')['default']
-    Keymap: typeof import('./src/components/icons/keymap.vue')['default']
     Light: typeof import('./src/components/icons/light.vue')['default']
     Lnk: typeof import('./src/components/icons/lnk.vue')['default']
     Macro: typeof import('./src/components/icons/macro.vue')['default']
