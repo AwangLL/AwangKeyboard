@@ -7,9 +7,7 @@
     "build": "run-p type-check build-only",
     "preview": "vite preview",
     "build-only": "vite build",
-    "type-check": "vue-tsc --noEmit",
-    "ignore-jekyll": "type NUL > dist/.nojekyll",
-    "push": "cd D:/.Project/AwangKeyboard; git subtree push --prefix=4-Software/awang-keyboard-driver/dist origin gh-pages"
+    "type-check": "vue-tsc --noEmit"
   },
   "dependencies": {
     "@ijprest/kle-serial": "^0.15.1",
