@@ -4,6 +4,8 @@
   --menu-text-color: #303030d0;
   --menu-hover-bg-color: #ecf5ff;
   --menu-active-text-color: #66ccff;
+  --switch-border-color: #bcbcbc;
+  --switch-bg-color: #f1f1f1;
 }
 
 html.dark {
@@ -11,4 +13,6 @@ html.dark {
   --menu-bg-color: #303030;
   --menu-text-color: #f8f8f8d0;
   --menu-hover-bg-color: #374151;
+  --switch-border-color: #4b4b4b;
+  --switch-bg-color: #3a3a3a;
 }
