@@ -232,6 +232,9 @@ static void matrix_remap() {
                     
                     // get keycode
                     keycode = config.matrix.keymap[layer][MAP[map_index]];
+                    if(layer && keycode == KC_NO) { //fn
+                        keycode = config.matrix.keymap[0][MAP[map_index]];
+                    }
 
                     // keycode type
                     if(keycode_is_common(keycode) || keycode_is_modifier(keycode)) {

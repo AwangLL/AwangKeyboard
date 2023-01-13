@@ -3,29 +3,30 @@
     <div class="aside">
       <!-- logo -->
       <img src="/logo.ico" class="logo" alt="" />
-      <span class="name">{{ config.brief }}</span>
+      <span class="name">{{ config.default.brief }}</span>
       <!-- menu -->
       <!-- keymap -->
       <div :class="['menu', activeMenu == MenuType.keymap ? 'menu-active' : '',]" @click="switchMenu(MenuType.keymap)">
-        <icon-keymap /><span>keymap</span>
+        <i class="i-ic-outline-keyboard" /><span>keymap</span>
       </div>
       <!-- light -->
       <div :class="['menu', activeMenu == MenuType.light ? 'menu-active' : '',]" @click="switchMenu(MenuType.light)">
-        <icon-light /><span>light</span>
+        <i class="i-ic-outline-lightbulb" /><span>light</span>
       </div>
       <!-- macro -->
       <div :class="['menu', activeMenu == MenuType.macro ? 'menu-active' : '',]" @click="switchMenu(MenuType.macro)">
-        <icon-macro /><span>macro</span>
+        <i class="i-ic-outline-fiber-smart-record" /><span>macro</span>
       </div>
       <!-- setting -->
       <div :class="['menu', activeMenu == MenuType.setting ? 'menu-active' : '',]"
         @click="switchMenu(MenuType.setting)">
-        <icon-setting /><span>setting</span>
+        <i class="i-ic-outline-settings" /><span>setting</span>
       </div>
+
       <div style="flex:1"></div>
       <!-- open file -->
       <label class="menu">
-        <icon-open-file /> <span>import</span>
+        <i class="i-ic-outline-file-open" /><span>import</span>
         <input type="file" hidden @change="importFile">
       </label>
     </div>
@@ -40,24 +41,13 @@
 </template>
 
 <script setup lang="ts">
-import IconKeymap from "@/components/icons/keyboard.vue";
-import IconLight from "@/components/icons/light.vue";
-import IconMacro from "@/components/icons/macro.vue";
-import IconSetting from "@/components/icons/setting.vue";
-import IconOpenFile from "@/components/icons/open-file.vue"
+// import Icon from ''
 import { useConfigStore } from "@/stores";
 import { useRouter } from "vue-router";
 import { useDark } from "@vueuse/core";
 import { ref } from "vue";
 import { ElMessage } from "element-plus";
-
-enum MenuType {
-  none,
-  keymap,
-  light,
-  macro,
-  setting,
-}
+import { MenuType } from "@/utils"
 
 const router = useRouter()
 const config = useConfigStore()
@@ -98,7 +88,10 @@ function importFile(e: any) {
   fr.onload = function () {
     try {
       var json = JSON.parse(this.result as string)
-      config.$state = json
+      config.$state = {
+        default: json,
+        keymap:json.keymap
+      }
       ElMessage.success("成功导入配置文件")
     } catch {
       ElMessage.error("配置文件不符合要求")
@@ -112,7 +105,6 @@ function importFile(e: any) {
 switchMenu(MenuType.keymap)
 // select theme
 useDark()
-
 
 </script>
 
@@ -140,6 +132,7 @@ useDark()
 
     .name {
       margin-bottom: 10px;
+      font-size: 20px;
       color: var(--menu-text-color);
     }
 
@@ -151,21 +144,21 @@ useDark()
       position: relative;
       transition: 0.3s;
       color: var(--menu-text-color);
-    }
 
-    .menu svg {
-      font-size: 60px;
-      position: absolute;
-      margin: 5px 0 5px 13px;
-    }
+      i {
+        font-size: 60px;
+        position: absolute;
+        margin: 5px 0 5px 13px;
+      }
 
-    .menu span {
-      position: relative;
-      top: 20px;
-      left: 80px;
-      font: 500 20px "";
-      opacity: 0;
-      transition: 0.1s;
+      span {
+        position: relative;
+        top: 22px;
+        left: 80px;
+        font-size: 20px;
+        opacity: 0;
+        transition: 0.1s;
+      }
     }
 
     .menu-active {
@@ -192,5 +185,9 @@ useDark()
     height: 100%;
     overflow: hidden;
   }
+}
+
+.icon-aaa {
+  background-image: url(/aaa.svg);
 }
 </style>

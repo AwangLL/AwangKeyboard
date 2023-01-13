@@ -71,7 +71,7 @@ a{
 }
 html, body{
   width: 100%;
-  font-family: "Arial", "Microsoft YaHei", "黑体", "宋体", "微软雅黑", sans-serif;
+  font-family: 'Microsoft YaHei';
 }
 body{
   line-height: 1;
@@ -83,6 +83,7 @@ html{
 }
 hr {
   width: 100%;
+  margin: 2px 0;
 }
 
 /*清除浮动*/

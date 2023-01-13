@@ -11,9 +11,15 @@ import "@/assets/reset.css";
 import "@/assets/base.css";
 import "animate.css"
 
+// uno css
+import 'uno.css'
+// import '@iconify-json/ic'
+
 // element pulus css
 import 'element-plus/es/components/message/style/index'
 import 'element-plus/es/components/select/style/index'
+import 'element-plus/es/components/table/style/index'
+import 'element-plus/es/components/table-column/style/index'
 
 // pinia
 const __piniaKey = '__PINIAKEY__'

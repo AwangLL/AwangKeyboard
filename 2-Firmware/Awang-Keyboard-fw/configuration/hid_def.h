@@ -69,131 +69,168 @@ static const uint8_t hid_kbd_report_desc_nkro[] = {
 
 enum keycode_t
 {
-    KC_TRNS = 0x01,
+    // KC_TRNS = 0x01,
     /* keyboard keycode */
     /* Common */
-    KC_NO = 0x00,    // 00 Reserved (no event indicated)
-    KC_ROLL_OVER,    // 01 Keyboard ErrorRollOver
-    KC_POST_FAIL,    // 02 Keyboard POSTFail
-    KC_UNDEFINED,    // 03 Keyboard ErrorUndefined
-    KC_A,            // 04 Keyboard a and A
-    KC_B,            // 05 Keyboard b and B
-    KC_C,            // 06 Keyboard c and C
-    KC_D,            // 07 Keyboard d and D
-    KC_E,            // 08 Keyboard e and E
-    KC_F,            // 09 Keyboard f and F
-    KC_G,            // 0A Keyboard g and G
-    KC_H,            // 0B Keyboard h and H
-    KC_I,            // 0C Keyboard i and I
-    KC_J,            // 0D Keyboard j and J
-    KC_K,            // 0E Keyboard k and K
-    KC_L,            // 0F Keyboard l and L
-    KC_M,            // 10 Keyboard m and M
-    KC_N,            // 11 Keyboard n and N
-    KC_O,            // 12 Keyboard o and O
-    KC_P,            // 13 Keyboard p and P
-    KC_Q,            // 14 Keyboard q and Q
-    KC_R,            // 15 Keyboard r and R
-    KC_S,            // 16 Keyboard s and S
-    KC_T,            // 17 Keyboard t and T
-    KC_U,            // 18 Keyboard u and U
-    KC_V,            // 19 Keyboard v and V
-    KC_W,            // 1A Keyboard w and W
-    KC_X,            // 1B Keyboard x and X
-    KC_Y,            // 1C Keyboard y and Y
-    KC_Z,            // 1D Keyboard z and Z
-    KC_1,            // 1E Keyboard 1 and !
-    KC_2,            // 1F Keyboard 2 and @
-    KC_3,            // 20 Keyboard 3 and #
-    KC_4,            // 21 Keyboard 4 and $
-    KC_5,            // 22 Keyboard 5 and %
-    KC_6,            // 23 Keyboard 6 and ^
-    KC_7,            // 24 Keyboard 7 and &
-    KC_8,            // 25 Keyboard 8 and *
-    KC_9,            // 26 Keyboard 9 and (
-    KC_0,            // 27 Keyboard 0 and )
-    KC_ENT,          // 28 Keyboard Return (ENTER)
-    KC_ESC,          // 29 Keyboard ESCAPE
-    KC_BSPC,         // 2A Keyboard DELETE (Backspace)
-    KC_TAB,          // 2B Keyboard Tab
-    KC_SPC,          // 2C Keyboard Spacebar
-    KC_MINS,         // 2D Keyboard - and (underscore)
-    KC_EQUL,         // 2E Keyboard = and +
-    KC_LBRC,         // 2F Keyboard [ and {
-    KC_RBRC,         // 30 Keyboard ] and }
-    KC_BSLS,         // 31 Keyboard \ and |
-    KC_NONUS_HASH,   // 32 Keyboard Non-US # and ~
-    KC_SCLN,         // 33 Keyboard ; and :
-    KC_QUOT,         // 34 Keyboard ‘ and “
-    KC_GRV,          // 35 Keyboard Grave Accent and Tilde
-    KC_COMM,         // 36 Keyboard , and <
-    KC_DOT,          // 37 Keyboard . and >
-    KC_SLSH,         // 38 Keyboard / and ?
-    KC_CAPL,         // 39 Keyboard Caps Lock
-    KC_F1,           // 3A Keyboard F1
-    KC_F2,           // 3B Keyboard F2
-    KC_F3,           // 3C Keyboard F3
-    KC_F4,           // 3D Keyboard F4
-    KC_F5,           // 3E Keyboard F5
-    KC_F6,           // 3F Keyboard F6
-    KC_F7,           // 40 Keyboard F7
-    KC_F8,           // 41 Keyboard F8
-    KC_F9,           // 42 Keyboard F9
-    KC_F10,          // 43 Keyboard F10
-    KC_F11,          // 44 Keyboard F11
-    KC_F12,          // 45 Keyboard F12
-    KC_PRSC,         // 46 Keyboard PrintScreen
-    KC_SCRL,         // 47 Keyboard Scroll Lock
-    KC_PAUS,         // 48 Keyboard Pause
-    KC_INS,          // 49 Keyboard Insert
-    KC_HOME,         // 4A Keyboard Home
-    KC_PGUP,         // 4B Keyboard PageUp
-    KC_DEL,          // 4C Keyboard Delete Forward
-    KC_END,          // 4D Keyboard End
-    KC_PGDN,         // 4E Keyboard PageDown
-    KC_RIGT,         // 4F Keyboard RightArrow
-    KC_LEFT,         // 50 Keyboard LeftArrow
-    KC_DOWN,         // 51 Keyboard DownArrow
-    KC_UP,           // 52 Keyboard UpArrow
-    KC_KP_NUML,      // 53 Keypad Num Lock and Clear
-    KC_KP_SLSH,      // 54 Keypad /
-    KC_KP_ASTR,      // 55 Keypad *
-    KC_KP_MINS,      // 56 Keypad -
-    KC_KP_PLUS,      // 57 Keypad +
-    KC_KP_ENT,       // 58 Keypad ENTER
-    KC_KP_1,         // 59 Keypad 1 and End
-    KC_KP_2,         // 5A Keypad 2 and Down Arrow
-    KC_KP_3,         // 5B Keypad 3 and PageDn
-    KC_KP_4,         // 5C Keypad 4 and Left Arrow
-    KC_KP_5,         // 5D Keypad 5
-    KC_KP_6,         // 5E Keypad 6 and Right Arrow
-    KC_KP_7,         // 5F Keypad 7 and Home
-    KC_KP_8,         // 60 Keypad 8 and Up Arrow
-    KC_KP_9,         // 61 Keypad 9 and PageUp
-    KC_KP_0,         // 62 Keypad 0 and Insert
-    KC_KP_DOT,       // 63 Keypad . and Delete
-    KC_NONUS_BSLASH, // 64 Keyboard Non-US \ and |
-    KC_APP,          // 65 Keyboard Application
+    /* 0x00 - 0x86 */
+    KC_NO = 0x00,       // 00 Reserved (no event indicated)
+    KC_ROLL_OVER,       // 01 Keyboard ErrorRollOver
+    KC_POST_FAIL,       // 02 Keyboard POSTFail
+    KC_UNDEFINED,       // 03 Keyboard ErrorUndefined
+    KC_A,               // 04 Keyboard a and A
+    KC_B,               // 05 Keyboard b and B
+    KC_C,               // 06 Keyboard c and C
+    KC_D,               // 07 Keyboard d and D
+    KC_E,               // 08 Keyboard e and E
+    KC_F,               // 09 Keyboard f and F
+    KC_G,               // 0A Keyboard g and G
+    KC_H,               // 0B Keyboard h and H
+    KC_I,               // 0C Keyboard i and I
+    KC_J,               // 0D Keyboard j and J
+    KC_K,               // 0E Keyboard k and K
+    KC_L,               // 0F Keyboard l and L
+    KC_M,               // 10 Keyboard m and M
+    KC_N,               // 11 Keyboard n and N
+    KC_O,               // 12 Keyboard o and O
+    KC_P,               // 13 Keyboard p and P
+    KC_Q,               // 14 Keyboard q and Q
+    KC_R,               // 15 Keyboard r and R
+    KC_S,               // 16 Keyboard s and S
+    KC_T,               // 17 Keyboard t and T
+    KC_U,               // 18 Keyboard u and U
+    KC_V,               // 19 Keyboard v and V
+    KC_W,               // 1A Keyboard w and W
+    KC_X,               // 1B Keyboard x and X
+    KC_Y,               // 1C Keyboard y and Y
+    KC_Z,               // 1D Keyboard z and Z
+    KC_1,               // 1E Keyboard 1 and !
+    KC_2,               // 1F Keyboard 2 and @
+    KC_3,               // 20 Keyboard 3 and #
+    KC_4,               // 21 Keyboard 4 and $
+    KC_5,               // 22 Keyboard 5 and %
+    KC_6,               // 23 Keyboard 6 and ^
+    KC_7,               // 24 Keyboard 7 and &
+    KC_8,               // 25 Keyboard 8 and *
+    KC_9,               // 26 Keyboard 9 and (
+    KC_0,               // 27 Keyboard 0 and )
+    KC_ENT,             // 28 Keyboard Return (ENTER)
+    KC_ESC,             // 29 Keyboard ESCAPE
+    KC_BSPC,            // 2A Keyboard DELETE (Backspace)
+    KC_TAB,             // 2B Keyboard Tab
+    KC_SPC,             // 2C Keyboard Spacebar
+    KC_MINS,            // 2D Keyboard - and (underscore)
+    KC_EQUL,            // 2E Keyboard = and +
+    KC_LBRC,            // 2F Keyboard [ and {
+    KC_RBRC,            // 30 Keyboard ] and }
+    KC_BSLS,            // 31 Keyboard \ and |
+    KC_NONUS_HASH,      // 32 Keyboard Non-US # and ~
+    KC_SCLN,            // 33 Keyboard ; and :
+    KC_QUOT,            // 34 Keyboard ‘ and “
+    KC_GRV,             // 35 Keyboard Grave Accent and Tilde
+    KC_COMM,            // 36 Keyboard , and <
+    KC_DOT,             // 37 Keyboard . and >
+    KC_SLSH,            // 38 Keyboard / and ?
+    KC_CAPL,            // 39 Keyboard Caps Lock
+    KC_F1,              // 3A Keyboard F1
+    KC_F2,              // 3B Keyboard F2
+    KC_F3,              // 3C Keyboard F3
+    KC_F4,              // 3D Keyboard F4
+    KC_F5,              // 3E Keyboard F5
+    KC_F6,              // 3F Keyboard F6
+    KC_F7,              // 40 Keyboard F7
+    KC_F8,              // 41 Keyboard F8
+    KC_F9,              // 42 Keyboard F9
+    KC_F10,             // 43 Keyboard F10
+    KC_F11,             // 44 Keyboard F11
+    KC_F12,             // 45 Keyboard F12
+    KC_PRSC,            // 46 Keyboard PrintScreen
+    KC_SCRL,            // 47 Keyboard Scroll Lock
+    KC_PAUS,            // 48 Keyboard Pause
+    KC_INS,             // 49 Keyboard Insert
+    KC_HOME,            // 4A Keyboard Home
+    KC_PGUP,            // 4B Keyboard PageUp
+    KC_DEL,             // 4C Keyboard Delete Forward
+    KC_END,             // 4D Keyboard End
+    KC_PGDN,            // 4E Keyboard PageDown
+    KC_RIGT,            // 4F Keyboard RightArrow
+    KC_LEFT,            // 50 Keyboard LeftArrow
+    KC_DOWN,            // 51 Keyboard DownArrow
+    KC_UP,              // 52 Keyboard UpArrow
+    KC_KP_NUML,         // 53 Keypad Num Lock and Clear
+    KC_KP_SLSH,         // 54 Keypad /
+    KC_KP_ASTR,         // 55 Keypad *
+    KC_KP_MINS,         // 56 Keypad -
+    KC_KP_PLUS,         // 57 Keypad +
+    KC_KP_ENT,          // 58 Keypad ENTER
+    KC_KP_1,            // 59 Keypad 1 and End
+    KC_KP_2,            // 5A Keypad 2 and Down Arrow
+    KC_KP_3,            // 5B Keypad 3 and PageDn
+    KC_KP_4,            // 5C Keypad 4 and Left Arrow
+    KC_KP_5,            // 5D Keypad 5
+    KC_KP_6,            // 5E Keypad 6 and Right Arrow
+    KC_KP_7,            // 5F Keypad 7 and Home
+    KC_KP_8,            // 60 Keypad 8 and Up Arrow
+    KC_KP_9,            // 61 Keypad 9 and PageUp
+    KC_KP_0,            // 62 Keypad 0 and Insert
+    KC_KP_DOT,          // 63 Keypad . and Delete
+    KC_NONUS_BSLASH,    // 64 Keyboard Non-US \ and |
+    KC_APP,             // 65 Keyboard Application
 
     /* Modifiers */
-    KC_LCTL = 0xE0, // E0 keyboard left ctrl
-    KC_LSFT,        // E1 keyboard left shift
-    KC_LALT,        // E2 keyboard left alt
-    KC_LGUI,        // E3 keyboard left gui
-    KC_RCTL,        // E4 keyboard right ctrl
-    KC_RSFT,        // E5 keyboard right shift
-    KC_RALT,        // E6 keyboard right alt
-    KC_RGUI,        // E7 keyboard right gui
+    /* 0xE0 - 0xE7*/
+    KC_LCTL = 0xE0,     // E0 keyboard left ctrl
+    KC_LSFT,            // E1 keyboard left shift
+    KC_LALT,            // E2 keyboard left alt
+    KC_LGUI,            // E3 keyboard left gui
+    KC_RCTL,            // E4 keyboard right ctrl
+    KC_RSFT,            // E5 keyboard right shift
+    KC_RALT,            // E6 keyboard right alt
+    KC_RGUI,            // E7 keyboard right gui
 
     /* consumer keycode */
     /* 0xE8 - 0xFF */
-    KC_MUTE = 0xE8, //E8 E2  comsumer volumn mute
-    KC_VOLU,        //E9 E9  consumer volumn increasement
-    KC_VOLD,        //EA EA  consumer volumn decreasement
-    KC_PLAY,        //EB CD  consumer media play & pause
-    KC_MAIL,        //EC 18A consumer application mail
-    KC_CALC,        //ED 192 consumer application calculator
-    KC_COMP,        //EE 194 consumer application computer
+    KC_C_VM = 0xE8,     // E8 E2  comsumer volumn mute
+    KC_C_VI,            // E9 E9  consumer volumn increasement
+    KC_C_VD,            // EA EA  consumer volumn decreasement
+    KC_C_PP,            // EB CD  consumer play/pause
+    KC_C_SPT,           // EC B6  consumer scan prev track
+    KC_C_SNT,           // ED B5  consumer scan next track
+    KC_C_CALC,          // EE 192 consumer application calculator
+    KC_C_TASK,          // EF 1A1 consumer application process/task manager
+    KC_C_MAIL,          // F0 18A consumer application email reader
+    KC_C_LMB,           // F1 194 consumer application local machine browser
+    KC_C_FILE,          // F2 1B4 consumer application file browser
+
+    /* mouse */
+    /* 0x87 - 0x90 */
+    KC_MSLB = 0x87,      // 87 mosue left button
+    KC_MSRB,             // 88 mouse right button
+    KC_MSSB,             // 89 mouse scroll button
+    KC_MSB4,             // 8A mouse button 4
+    KC_MSB5,             // 8B mouse button 5
+    KC_MSDC,             // 8C mouse double click
+    KC_MSSU,             // 8D mouse scroll up
+    KC_MSSD,             // 8E mouse scroll down
+    KC_MSSL,             // 8F mouse scroll left
+    KC_MSSR,             // 90 mouse scroll right
+
+    /* macro */
+    /* 0x91 - 0xA4*/
+    KC_MC1 = 0x91,  // 91
+    KC_MC2,         // 92
+    KC_MC3,         // 93
+    KC_MC4,         // 94
+    KC_MC5,         // 95
+    KC_MC6,         // 96
+    KC_MC7,         // 97
+    KC_MC8,         // 98
+    KC_MC9,         // 99
+    KC_MC10,        // 9A
+    KC_MC11,        // 9B
+    KC_MC12,        // 9C
+    KC_MC13,        // 9D
+    KC_MC14,        // 9E
+    KC_MC15,        // 9F
 
     /* function keycode */
     /* 0xA5 - 0xDF */
@@ -231,9 +268,13 @@ static const uint16_t consumer_keycode_map[] = {
     0xE9,
     0xEA,
     0xCD,
-    0x18A,
+    0xB6,
+    0xB5,
     0x192,
-    0x194
+    0x1A1,
+    0x18A,
+    0x194,
+    0x184,
 };
 
 static inline uint16_t get_consumer_by_keycode(uint8_t keycode)

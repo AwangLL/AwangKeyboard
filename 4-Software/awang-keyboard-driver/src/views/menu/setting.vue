@@ -1,14 +1,11 @@
 <template>
   <div class="container">
-    <aw-switch v-model="isDark" :inactive-icon="IconSun" :active-icon="IconMoon" @click="onDarkChange"/>
+    <aw-switch v-model="isDark" inactive-icon="outline-light-mode" active-icon="outline-dark-mode" @click="onDarkChange"/>
   </div>
 </template>
 
 <script setup lang="ts">
 import AwSwitch from '@/components/switch.vue'
-import IconSun from '@/components/icons/sun.vue'
-import IconMoon from '@/components/icons/moon.vue'
-import { getCurrentInstance } from 'vue'
 import { useDark } from '@vueuse/core'
 import { ElMessage } from 'element-plus'
 

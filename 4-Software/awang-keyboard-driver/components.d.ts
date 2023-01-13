@@ -7,22 +7,11 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    ElTooltip: typeof import('element-plus/es')['ElTooltip']
     Key: typeof import('./src/components/key.vue')['default']
-    Keyboard: typeof import('./src/components/icons/keyboard.vue')['default']
     KeyGroup: typeof import('./src/components/key-group.vue')['default']
-    Light: typeof import('./src/components/icons/light.vue')['default']
-    Lnk: typeof import('./src/components/icons/lnk.vue')['default']
-    Macro: typeof import('./src/components/icons/macro.vue')['default']
-    Media: typeof import('./src/components/icons/media.vue')['default']
-    Moon: typeof import('./src/components/icons/moon.vue')['default']
-    Mouse: typeof import('./src/components/icons/mouse.vue')['default']
-    OpenFile: typeof import('./src/components/icons/open-file.vue')['default']
-    Reset: typeof import('./src/components/icons/reset.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    Save: typeof import('./src/components/icons/save.vue')['default']
-    Setting: typeof import('./src/components/icons/setting.vue')['default']
-    Sun: typeof import('./src/components/icons/sun.vue')['default']
     Switch: typeof import('./src/components/switch.vue')['default']
   }
 }

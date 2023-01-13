@@ -7,6 +7,9 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import { visualizer } from 'rollup-plugin-visualizer'
+import unocss from 'unocss/vite'
+import { presetIcons } from 'unocss'
+
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -21,6 +24,9 @@ export default defineConfig({
     }),
     visualizer({
       open: true
+    }),
+    unocss({
+      presets: [presetIcons()]
     })
   ],
   resolve: {

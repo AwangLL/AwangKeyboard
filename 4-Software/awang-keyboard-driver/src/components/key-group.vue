@@ -1,22 +1,30 @@
 <template>
   <div class="key-group">
     <div class="key-box" v-for="(item, index) in props.keys">
-      <aw-key :k="item" :selected="select[index]" :pressed="select[index]" @click="selectKey(index as number)"/>
+      <aw-key :x="item.x" :y="item.y" :width="item.width" :height="item.height" :keycode="props.keymap[index]" :color="props.color[index]"
+      :selected="select[index]" :pressed="select[index]" @click="selectKey(index as number)" :disabled="props.disabled"/>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import AwKey from '@/components/key.vue'
-import { defineProps, defineEmits, ref, computed } from 'vue';
+import { defineProps, defineEmits, ref, computed, withDefaults } from 'vue';
 import type { Key } from "@ijprest/kle-serial"
 
-const props = defineProps<{
-  modelValue: number
+const props = withDefaults(defineProps<{
+  modelValue: number // selected key index
   keys: Array<Key>
   width: string
   height: string
-}>()
+  keymap?: Array<number>
+  color?: Array<string>
+  disabled?: boolean
+}>(), {
+  keymap: () => [],
+  color: () => [],
+  disabled: false
+})
 const emit = defineEmits(['update:modelValue'])
 
 const selectedIndex = computed({

@@ -2,22 +2,22 @@
 <template>
   <div :class="['switch', flag ? 'active' : '']" @click="onClick()">
     <div class="icon">
-      <props.activeIcon v-if="flag && props?.activeIcon" />
-      <props.inactiveIcon v-if="flag == false && props?.inactiveIcon" />
+      <!-- <i class="i-ic-outline-lock-reset" /> -->
+      <i :class="'i-ic-' + props.activeIcon" v-if="flag && props?.activeIcon"/>
+      <i :class="'i-ic-' + props.inactiveIcon" v-if="flag == false && props?.inactiveIcon" />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { withDefaults, defineProps, computed } from 'vue'
-import type { Component } from 'vue'
 
 const props = withDefaults(defineProps<{
   modelValue: boolean
   width?: number
   height?: number
-  inactiveIcon?: Component
-  activeIcon?: Component
+  inactiveIcon?: string
+  activeIcon?: string
 }>(), {
   width: 60,
   height: 30
@@ -62,12 +62,11 @@ const onClick = () => {
     background-color: var(--html-bg-color);
     transition: all .2s linear;
 
-    svg {
-      margin-left: 1px;
-      margin-top: 1px;
-      width: v-bind("iconRadius");
-      height: v-bind("iconRadius");
+    i {
+      margin: 1px;
+      font-size: v-bind("iconRadius");
       color: var(--menu-text-color);
+      position: absolute;
     }
   }
 }
