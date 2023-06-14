@@ -21,9 +21,7 @@ import { RouterView } from "vue-router";
 </script>
 
 <style>
-html,
-body,
-#app {
+html, body, #app {
   height: 100%;
 }
 #app {

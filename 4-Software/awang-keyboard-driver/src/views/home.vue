@@ -90,7 +90,8 @@ function importFile(e: any) {
       var json = JSON.parse(this.result as string)
       config.$state = {
         default: json,
-        keymap:json.keymap
+        keymap:json.keymap,
+        fn: json.fn
       }
       ElMessage.success("成功导入配置文件")
     } catch {
